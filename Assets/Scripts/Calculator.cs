@@ -50,4 +50,14 @@ public class Calculator : MonoBehaviour {
             throw new ArgumentException("La expresión no es válida.", ex);
         }
     }
+
+    public void quit() {
+#if UNITY_EDITOR
+        // Detener el Editor de Unity
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Cerrar la aplicación en una build
+        Application.Quit();
+#endif
+    }
 }
